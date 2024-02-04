@@ -13,5 +13,12 @@ services:
         - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
         - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
         - MONGO_INITDB_DB_NAME=root-db
+  func:
+      build: 
+        context: ./function
+      ports: 
+        - "7132:80"
+      depends_on:
+        - db
 volumes:
   blog-api-volume:

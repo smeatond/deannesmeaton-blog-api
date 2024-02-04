@@ -5,16 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace Blog.Function.API
 {
-    public class HttpExample
+    public class HttpBlogFunction
     {
         private readonly ILogger _logger;
 
-        public HttpExample(ILoggerFactory loggerFactory)
+        public HttpBlogFunction(ILoggerFactory loggerFactory)
         {
-            _logger = loggerFactory.CreateLogger<HttpExample>();
+            _logger = loggerFactory.CreateLogger<HttpBlogFunction>();
         }
 
-        [Function("HttpExample")]
+        [Function("HttpBlogFunction")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");

@@ -265,3 +265,6 @@ __pycache__/
 
 #env files
 *.env
+
+#dev notes
+developernotes.txt

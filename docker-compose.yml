@@ -3,15 +3,15 @@ services:
   db:
       build:
         context: ./db
+        args:
+          - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+          - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
       restart: always
       volumes:
         - blog-api-volume:/data/db
+        - ./db/init/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro 
       ports:
-        - "27017:27017"
-      environment:
-        - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-        - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-        - MONGO_INITDB_DB_NAME=root-db
+        - "27017:27017"     
   func:
       build: 
         context: ./functions/Blog.Function.API
